@@ -264,23 +264,6 @@
             position: relative;
         }
 
-        /* FOTO SISWA UI WEB */
-        .student-profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-        .student-profile img {
-            width: 110px;
-            height: 146px; /* Rasio 3x4 */
-            object-fit: cover;
-            border-radius: 8px;
-            border: 3px solid var(--gold);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            background: rgba(255,255,255,0.1);
-        }
-
         .status-badge {
             text-align: center;
             padding: 15px;
@@ -451,40 +434,18 @@
             }
             .tahun-ajaran { margin-bottom: 20px; }
 
-            /* LAYOUT DATA & FOTO UNTUK CETAK */
-            .print-data-wrapper {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-                margin-bottom: 30px;
-            }
+        .print-table {
+            width: 90%;
+            margin: 0 auto 30px auto;
+            border-collapse: collapse;
+            font-size: 12pt;
+        }
+        .print-table td { padding: 6px; border: none; color: black !important; }
+        .print-table td:first-child { width: 35%; font-weight: normal; }
 
-            .print-table {
-                width: 75%;
-                border-collapse: collapse;
-                font-size: 12pt;
-            }
-            .print-table td { padding: 6px; border: none; color: black !important; }
-            .print-table td:first-child { width: 40%; font-weight: normal; }
-
-            /* KOTAK PASFOTO 3X4 DI SKL */
-            .print-photo-box {
-                width: 3cm;
-                height: 4cm;
-                border: 2px solid black;
-                padding: 2px;
-                background: white;
-            }
-            .print-photo-box img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-            }
-
-            .ttd-area {
-                float: right;
-                min-width: 350px; 
+        .ttd-area {
+            float: right;
+            min-width: 350px; 
                 text-align: left;
                 margin-top: 40px;
                 font-size: 12pt;
@@ -546,24 +507,16 @@
         </div>
 
         <p style="text-align: justify; margin-bottom: 15px; font-size: 12pt;">
-            Kepala sekolah SMPS SHABILLA menerangkan dengan sesungguhnya bahwa siswa/i dengan identitas di bawah ini:
+            Kepala SMPS SHABILLA menerangkan dengan sesungguhnya bahwa siswa/i dengan identitas di bawah ini:
         </p>
 
-        <!-- WADAH FLEKSIBEL UNTUK TEKS & FOTO CETAK -->
-        <div class="print-data-wrapper">
-            <table class="print-table">
-                <tr><td>Nama</td><td>: <span id="p-nama"></span></td></tr>
-                <tr><td>Nomor Peserta</td><td>: <span id="p-peserta"></span></td></tr>
-                <tr><td>NISN</td><td>: <span id="p-nisn"></span></td></tr>
-                <tr><td>Jenis Kelamin</td><td>: <span id="p-jk"></span></td></tr>
-                <tr><td>Tempat, Tanggal Lahir</td><td>: <span id="p-ttl"></span></td></tr>
-            </table>
-            
-            <!-- PASFOTO 3X4 DI SKL -->
-            <div class="print-photo-box">
-                <img id="p-foto" src="" alt="Pasfoto 3x4">
-            </div>
-        </div>
+        <table class="print-table">
+            <tr><td>Nama</td><td>: <span id="p-nama"></span></td></tr>
+            <tr><td>Nomor Peserta</td><td>: <span id="p-peserta"></span></td></tr>
+            <tr><td>NISN</td><td>: <span id="p-nisn"></span></td></tr>
+            <tr><td>Jenis Kelamin</td><td>: <span id="p-jk"></span></td></tr>
+            <tr><td>Tempat, Tanggal Lahir</td><td>: <span id="p-ttl"></span></td></tr>
+        </table>
 
         <p style="text-align: center; font-size: 14pt; font-weight: bold; margin: 30px 0;">
             Dinyatakan: <span id="p-status"></span>
@@ -615,11 +568,6 @@
             <!-- Result Area -->
             <div class="result-container" id="result-section">
                 
-                <!-- FOTO SISWA DI HALAMAN WEB -->
-                <div class="student-profile">
-                    <img id="res-foto" src="" alt="Foto Siswa">
-                </div>
-
                 <div class="status-badge" id="res-status"></div>
                 
                 <table class="data-table">
@@ -679,10 +627,10 @@ BAHAR RIZKY,0202,L,3142079212,BATAM,2011-04-30,LULUS
 DAHLAN,0191,L,0097634824,BATAM,2009-12-28,LULUS
 DINDA KIRANA,0192,P,0109865164,BATAM,2010-06-12,LULUS
 DWI NADZIATUS SA'ADAH,0197,P,0103369770,BATAM,2010-12-28,LULUS
-FIQRAM HARRY ANGRIAN,0000,L,0095648354,BATAM,2009-11-26,TIDAK LULUS
+FIQRAM HARRY ANGRIAN,0021,L,0095648354,BATAM,2009-11-26,TIDAK LULUS
 FIQRAM HARRY ANGRIAN,0190,L,0095648354,BATAM,2009-11-26,LULUS
 GADING NUR PAMUNGKAS,0196,L,0107264886,BATAM,2010-09-28,LULUS
-GADING NUR PAMUNGKAS,0001,L,0107264886,BATAM,2010-09-28,TIDAK LULUS
+GADING NUR PAMUNGKAS,0011,L,0107264886,BATAM,2010-09-28,TIDAK LULUS
 GHIFRANIE ROSE NASUTION,0198,P,0111763152,BATAM,2010-12-16,LULUS
 ISRA NUR MUGNI HASIBUAN,0194,P,0109375043,BATAM,2010-07-24,LULUS
 MUHAMMAD FAIZ PRATAMA,0189,L,0099128547,BATAM,2009-07-20,LULUS
@@ -711,9 +659,6 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
 
         const siswaData = parseCSVToObjects(rawCSV);
         let dataSiswaAktif = null;
-
-        // Ikon Siluet Cadangan (Kalau foto gak ada di folder)
-        const fallbackImg = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
 
         const inputPeserta = document.getElementById('input-peserta');
         const btnCek = document.getElementById('btn-cek');
@@ -832,17 +777,6 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
 
                 if (result) {
                     dataSiswaAktif = result;
-
-                    // LOGIKA INJEKSI FOTO SISWA BERSARAKAN NOMOR PESERTA
-                    const resFoto = document.getElementById('res-foto');
-                    const pFoto = document.getElementById('p-foto');
-                    const urlFoto = `foto_siswa/${result.peserta}.jpg`; // Format Path File Foto
-                    
-                    // Reset Error handler & set src baru
-                    resFoto.onerror = function() { this.src = fallbackImg; };
-                    pFoto.onerror = function() { this.src = fallbackImg; };
-                    resFoto.src = urlFoto;
-                    pFoto.src = urlFoto;
 
                     document.getElementById('res-nama').innerText = result.nama;
                     document.getElementById('res-peserta').innerText = result.peserta;
