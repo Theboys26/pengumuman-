@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan - SMPS SHABILLA</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* CSS VARIABLES */
+        :root {
+            --primary-blue: #0f172a;
+            --secondary-blue: #1e3a8a;
+            --gold: #d4af37;
+            --gold-light: #fbe083;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-light: #f8fafc;
+        }
+
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ISLAMIC PATTERN BACKGROUND (SVG DATA URI) */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: -1;
+        }
+
+        /* HEADER & FULLSCREEN */
+        .top-bar {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            top: 0;
+            z-index: 10;
+        }
+
+        .btn-icon {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--gold);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-icon:hover {
+            background: var(--gold);
+            color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        /* MAIN CONTAINER (GLASSMORPHISM) */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* LOGO & TYPOGRAPHY */
+        .logo-wrapper {
+            width: 100px;
+            height: 100px;
+            background: white; /* Fallback color for logo */
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            overflow: hidden;
+            border: 3px solid var(--gold);
+        }
+
+        .logo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure logo is fully visible */
+            background: white;
+        }
+
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: 400;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+        }
+
+        /* FORM INPUT */
+        .search-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+        }
+
+        input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            letter-spacing: normal;
+        }
+
+        button.btn-primary {
+            background: linear-gradient(135deg, var(--gold), #b8860b);
+            color: var(--primary-blue);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button.btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        button.btn-primary:disabled {
+            background: #555;
+            color: #999;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* LOADING ANIMATION */
+        .loader {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--gold);
+            animation: spin 1s ease-in-out infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* NOTIFICATIONS & RESULTS */
+        .notification {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .notif-error {
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid #ef4444;
+            color: #fca5a5;
+        }
+
+        .result-container {
+            display: none;
+            margin-top: 30px;
+            text-align: left;
+            animation: slideUp 0.8s ease;
+            position: relative;
+        }
+
+        .status-badge {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            border: 2px solid var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .data-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table td:first-child {
+            font-weight: 600;
+            color: var(--gold-light);
+            width: 40%;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--primary-blue);
+        }
+
+        /* FOOTER */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: auto;
+        }
+
+        footer span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* CONFETTI CANVAS */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* PRINT MEDIA QUERIES */
+        #print-area { display: none; }
+
+        @media print {
+            @page { size: A4 portrait; margin: 1cm; }
+            body {
+                background: white !important;
+                color: black !important;
+                display: block;
+            }
+            /* Sembunyikan SEMUA elemen web UI saat ngeprint */
+            body > *:not(#print-area) {
+                display: none !important;
+            }
+            
+            /* Tampilkan area print saja dengan BINGKAI */
+            #print-area {
+                display: block;
+                font-family: 'Times New Roman', Times, serif;
+                color: black;
+                line-height: 1.5;
+                position: relative;
+                
+                /* PENYESUAIAN PADDING BAWAAN - GUE KECILIN BIAR TEKS NAIK KE ATAS */
+                padding: 1.2cm 2cm; 
+                
+                min-height: 27cm; 
+                box-sizing: border-box;
+
+                /* --- BINGKAI DEFAULT (GARIS GANDA ELEGAN) --- */
+                border: 6px double #333; 
+                outline: 2px solid #333;
+                outline-offset: -12px;
+
+                /* --- OPSI GAMBAR BINGKAI --- */
+                /* background-image: url('bingkai.png'); */
+                /* background-size: 100% 100%; */
+                /* background-repeat: no-repeat; */
+                /* background-position: center; */
+            }
+            
+            /* KOP SURAT STANDAR DINAS DUA LOGO */
+            .kop-surat {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 3px solid black;
+                position: relative;
+                padding-bottom: 10px;
+                margin-bottom: 20px; /* Diperkecil biar ga terlalu jauh ke judul surat */
+            }
+            .kop-surat::after {
+                content: "";
+                position: absolute;
+                bottom: -6px;
+                left: 0;
+                width: 100%;
+                border-bottom: 1px solid black;
+            }
+            .kop-logo, .kop-logo-kanan {
+                width: 100px; 
+                flex-shrink: 0;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .kop-logo img, .kop-logo-kanan img {
+                width: 100%;
+                max-height: 100px;
+                object-fit: contain; 
+            }
+            
+            .kop-text {
+                flex-grow: 1;
+                text-align: center;
+                padding: 0 15px;
+            }
+            .kop-text h2 { 
+                font-size: 14pt; 
+                margin: 0; 
+                font-weight: bold;
+                letter-spacing: 0.5px; 
+                color: black; 
+                text-shadow: none;
+            }
+            .kop-text h1 { 
+                font-size: 16pt; 
+                margin: 2px 0 5px 0; 
+                font-weight: bold;
+                letter-spacing: 0; 
+                color: black; 
+                text-shadow: none;
+                white-space: nowrap; 
+            }
+            .kop-text p { 
+                margin: 0; 
+                font-size: 11pt; 
+                line-height: 1.3;
+            }
+
+            .surat-title {
+                text-align: center;
+                text-decoration: underline;
+                font-weight: bold;
+                font-size: 14pt;
+                margin-bottom: 2px;
+            }
+            
+            .nomor-surat {
+                text-align: center;
+                font-size: 12pt;
+                margin-bottom: 2px;
+            }
+
+            .tahun-ajaran {
+                text-align: center;
+                font-size: 12pt;
+                margin-bottom: 20px;
+            }
+
+            .print-table {
+                width: 90%;
+                margin: 0 auto 30px auto;
+                border-collapse: collapse;
+                font-size: 12pt;
+            }
+            .print-table td { padding: 6px; border: none; color: black !important; }
+            .print-table td:first-child { width: 35%; font-weight: normal; }
+            .ttd-area {
+                float: right;
+                min-width: 350px; 
+                text-align: left;
+                margin-top: 40px;
+                font-size: 12pt;
+            }
+            .ttd-area p { margin: 0; }
+            .ttd-space { height: 80px; }
+            .nama-kepsek { white-space: nowrap; } 
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .glass-card { padding: 30px 20px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1rem; }
+            .data-table td { display: block; width: 100% !important; padding: 5px 10px; }
+            .data-table td:first-child { padding-top: 15px; border-bottom: none; }
+            .logo-wrapper { width: 80px; height: 80px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRINT AREA (Format Surat SKL Tersembunyi) -->
+    <div id="print-area">
+        <div class="kop-surat">
+            <!-- LOGO KIRI (PEMKOT BATAM) -->
+            <div class="kop-logo">
+                <img src="logo-batam.png" alt="Logo Pemkot Batam" onerror="this.style.display='none'">
+            </div>
+            
+            <div class="kop-text">
+                <h2>PEMERINTAH KOTA BATAM</h2>
+                <h2>DINAS PENDIDIKAN</h2>
+                <h1>SMPS SHABILLA</h1>
+                <p style="font-weight: bold;">TERAKREDITASI : B</p>
+                <p>Alamat : Villa Pesona Asri Blok C7 No 1-7, Kelurahan Belian, Kecamatan Batam Kota, Batam 29432</p>
+                <p>NPSN : 69980649</p>
+            </div>
+            
+            <!-- LOGO KANAN (SEKOLAH SHABILLA) -->
+            <div class="kop-logo-kanan">
+                <img src="logo-sekolah.png" alt="Logo Sekolah Shabilla" onerror="this.style.display='none'">
+            </div>
+        </div>
+        
+        <div class="surat-title" style="text-decoration: none;">
+            <span style="text-decoration: underline;">SURAT KETERANGAN LULUS</span>
+        </div>
+        
+        <!-- BAGIAN NOMOR SURAT DINAMIS -->
+        <div class="nomor-surat">
+            NO. <span id="p-nomor"></span>
+        </div>
+
+        <div class="tahun-ajaran">
+            Tahun Ajaran 2025/2026
+        </div>
+
+        <p style="text-align: justify; margin-bottom: 20px; font-size: 12pt;">
+            Kepala sekolah SMPS SHABILLA menerangkan dengan sesungguhnya bahwa siswa/i dengan identitas di bawah ini:
+        </p>
+        <table class="print-table">
+            <tr><td>Nama</td><td>: <span id="p-nama"></span></td></tr>
+            <tr><td>Nomor Peserta</td><td>: <span id="p-peserta"></span></td></tr>
+            <tr><td>NISN</td><td>: <span id="p-nisn"></span></td></tr>
+            <tr><td>Jenis Kelamin</td><td>: <span id="p-jk"></span></td></tr>
+            <tr><td>Tempat, Tanggal Lahir</td><td>: <span id="p-ttl"></span></td></tr>
+        </table>
+        <p style="text-align: center; font-size: 14pt; font-weight: bold; margin: 30px 0;">
+            Dinyatakan: <span id="p-status"></span>
+        </p>
+        <div class="ttd-area">
+            <p>Batam, <span id="p-now"></span></p>
+            <p>Kepala Sekolah,</p>
+            <div class="ttd-space"></div>
+            <p class="nama-kepsek"><strong><u>SARAH NURAINI SIREGAR, S.Farm., S.Pd</u></strong><br>
+            NUKS. 21023L0013160222226159</p>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas Layer -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="top-bar">
+        <button class="btn-icon" id="btn-fullscreen" title="Fullscreen Mode">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="glass-card" id="main-card">
+            
+            <!-- LOGO SEKOLAH DI HALAMAN UTAMA -->
+            <div class="logo-wrapper">
+                <img src="logo-sekolah.png" alt="Logo SMPS Shabilla" onerror="this.style.display='none'">
+            </div>
+            
+            <div class="bismillah">﷽</div>
+            <h1>PENGUMUMAN KELULUSAN SISWA</h1>
+            <h2 style="margin-bottom: 5px;">SMPS SHABILLA</h2>
+            <h3 style="font-size: 1rem; color: rgba(255,255,255,0.8); font-weight: 300; letter-spacing: 2px; margin-bottom: 30px;">TAHUN AJARAN 2025/2026</h3>
+
+            <!-- Search Area -->
+            <div class="search-box" id="search-section">
+                <div class="input-group">
+                    <input type="text" id="input-peserta" placeholder="Masukkan 4 Digit Nomor Peserta" maxlength="10" autocomplete="off">
+                </div>
+                <button class="btn-primary" id="btn-cek">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    Cek Kelulusan
+                </button>
+            </div>
+
+            <!-- Loader -->
+            <div class="loader" id="loader"></div>
+
+            <!-- Notification Error -->
+            <div class="notification notif-error" id="notif-error">
+                DATA TIDAK DITEMUKAN
+            </div>
+
+            <!-- Result Area -->
+            <div class="result-container" id="result-section">
+                <div class="status-badge" id="res-status"></div>
+                
+                <table class="data-table">
+                    <tr>
+                        <td>Nama Siswa</td>
+                        <td>: <span id="res-nama"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Peserta</td>
+                        <td>: <span id="res-peserta"></span></td>
+                    </tr>
+                    <tr>
+                        <td>NISN</td>
+                        <td>: <span id="res-nisn"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Kelamin</td>
+                        <td>: <span id="res-jk"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Tempat Lahir</td>
+                        <td>: <span id="res-tempat"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Lahir</td>
+                        <td>: <span id="res-tanggal"></span></td>
+                    </tr>
+                </table>
+
+                <div class="action-buttons">
+                    <button class="btn-secondary" id="btn-kembali">
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        Kembali
+                    </button>
+                    <button class="btn-secondary" id="btn-cetak">
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                        Cetak Hasil
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 <span>SMPS SHABILLA</span><br>
+        Villa Pesona Asri Blok C7 No 1-7
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // DATA SISWA (OTOMATIS DARI CSV TEXT)
+        const rawCSV = `
+ADE FAUZIAH RAMADHANI,0195,P,0108717681,BATAM,2010-08-27,LULUS
+ANDI MUHAMMAD HARITH ALQIST,0200,L,0066433690,BATAM,2011-04-11,LULUS
+AZAZYR GOLD ZUL,0201,L,0118301581,BATAM,2011-04-23,LULUS
+BAHAR RIZKY,0202,L,3142079212,BATAM,2011-04-30,LULUS
+DAHLAN,0191,L,0097634824,BATAM,2009-12-28,LULUS
+DINDA KIRANA,0192,P,0109865164,BATAM,2010-06-12,LULUS
+DWI NADZIATUS SA'ADAH,0197,P,0103369770,BATAM,2010-12-28,LULUS
+FIQRAM HARRY ANGRIAN,0000,L,0095648354,BATAM,2009-11-26,TIDAK LULUS
+FIQRAM HARRY ANGRIAN,0190,L,0095648354,BATAM,2009-11-26,LULUS
+GADING NUR PAMUNGKAS,0196,L,0107264886,BATAM,2010-09-28,LULUS
+GADING NUR PAMUNGKAS,0001,L,0107264886,BATAM,2010-09-28,TIDAK LULUS
+GHIFRANIE ROSE NASUTION,0198,P,0111763152,BATAM,2010-12-16,LULUS
+ISRA NUR MUGNI HASIBUAN,0194,P,0109375043,BATAM,2010-07-24,LULUS
+MUHAMMAD FAIZ PRATAMA,0189,L,0099128547,BATAM,2009-07-20,LULUS
+NEVAN RAYHAN AGRA,0199,L,0113901102,BATAM,2011-02-04,LULUS
+ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
+        `;
+
+        // Fungsi parse dengan penambahan LOGIKA ID URUT UNTUK NOMOR SURAT
+        function parseCSVToObjects(csvText) {
+            const lines = csvText.trim().split('\n');
+            let counter = 1; // Penghitung urutan
+            return lines.map(line => {
+                const col = line.split(',');
+                // Buat nomor urut 3 digit misal: 001, 002, 015
+                const idUrut = String(counter++).padStart(3, '0'); 
+                return {
+                    id_urut: idUrut, 
+                    nama: col[0] ? col[0].trim() : "-",
+                    peserta: col[1] ? col[1].trim() : "-",
+                    jk: col[2] ? col[2].trim() : "-",
+                    nisn: col[3] ? col[3].trim() : "-",
+                    tempat: col[4] ? col[4].trim() : "-",
+                    tanggal: col[5] ? col[5].trim() : "-",
+                    status: col[6] ? col[6].trim().toUpperCase() : "LULUS" 
+                };
+            }).filter(siswa => siswa.peserta !== "" && siswa.peserta !== "-"); 
+        }
+
+        const siswaData = parseCSVToObjects(rawCSV);
+        let dataSiswaAktif = null; // Menyimpan data siswa yang sedang dicek
+
+        // DOM ELEMENTS
+        const inputPeserta = document.getElementById('input-peserta');
+        const btnCek = document.getElementById('btn-cek');
+        const searchSection = document.getElementById('search-section');
+        const loader = document.getElementById('loader');
+        const notifError = document.getElementById('notif-error');
+        const resultSection = document.getElementById('result-section');
+        const btnKembali = document.getElementById('btn-kembali');
+        const btnCetak = document.getElementById('btn-cetak');
+        const btnFullscreen = document.getElementById('btn-fullscreen');
+
+        // FORMAT TANGGAL
+        function formatTanggal(tglStr) {
+            const bulanIndo = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            const p = tglStr.split('-');
+            if(p.length !== 3) return tglStr;
+            return `${p[2]} ${bulanIndo[parseInt(p[1])-1]} ${p[0]}`;
+        }
+
+        // FULLSCREEN LOGIC
+        btnFullscreen.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        });
+
+        // AUDIO LOGIC 
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSuccessSound() {
+            if(audioCtx.state === 'suspended') audioCtx.resume();
+            
+            const freqs = [523.25, 659.25, 783.99, 1046.50]; 
+            let time = audioCtx.currentTime;
+            
+            freqs.forEach((freq, index) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                gain.gain.setValueAtTime(0, time + (index * 0.1));
+                gain.gain.linearRampToValueAtTime(0.1, time + (index * 0.1) + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + (index * 0.1) + 1);
+                
+                osc.start(time + (index * 0.1));
+                osc.stop(time + (index * 0.1) + 1.5);
+            });
+        }
+
+        // CONFETTI LOGIC
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particles = [];
+        let animationId;
+
+        function renderConfetti() {
+            for (let i = 0; i < 150; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 6 + 2,
+                    dx: Math.random() * 4 - 2,
+                    dy: Math.random() * 5 + 2,
+                    color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                    tilt: Math.floor(Math.random() * 10) - 10,
+                    tiltAngleInc: (Math.random() * 0.07) + 0.05,
+                    tiltAngle: 0
+                });
+            }
+            animateConfetti();
+        }
+
+        function animateConfetti() {
+            animationId = requestAnimationFrame(animateConfetti);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                p.tiltAngle += p.tiltAngleInc;
+                p.y += (Math.cos(p.tiltAngle) + p.dy);
+                p.x += Math.sin(p.tiltAngle) * 2;
+                
+                ctx.beginPath();
+                ctx.lineWidth = p.r;
+                ctx.strokeStyle = p.color;
+                ctx.moveTo(p.x + p.tilt + p.r, p.y);
+                ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r);
+                ctx.stroke();
+
+                if (p.y > canvas.height) particles.splice(index, 1);
+            });
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // SEARCH LOGIC
+        btnCek.addEventListener('click', () => {
+            const keyword = inputPeserta.value.trim();
+            if(!keyword) return;
+
+            btnCek.disabled = true;
+            notifError.style.display = 'none';
+            searchSection.style.display = 'none';
+            loader.style.display = 'block';
+
+            setTimeout(() => {
+                loader.style.display = 'none';
+                btnCek.disabled = false;
+
+                const result = siswaData.find(s => s.peserta === keyword);
+
+                if (result) {
+                    dataSiswaAktif = result; // Simpan data siswa aktif untuk cetak
+
+                    document.getElementById('res-nama').innerText = result.nama;
+                    document.getElementById('res-peserta').innerText = result.peserta;
+                    document.getElementById('res-nisn').innerText = result.nisn;
+                    document.getElementById('res-jk').innerText = result.jk === 'L' ? 'Laki-laki' : 'Perempuan';
+                    document.getElementById('res-tempat').innerText = result.tempat;
+                    document.getElementById('res-tanggal').innerText = formatTanggal(result.tanggal);
+                    
+                    const statusEl = document.getElementById('res-status');
+                    if(result.status.toUpperCase() === 'LULUS') {
+                        statusEl.innerText = "SELAMAT ANDA DINYATAKAN LULUS";
+                        statusEl.style.color = "#4ade80"; 
+                        statusEl.style.borderColor = "#4ade80";
+                        statusEl.style.background = "rgba(74, 222, 128, 0.1)";
+                        
+                        playSuccessSound();
+                        particles = []; 
+                        renderConfetti();
+                    } else {
+                        statusEl.innerText = "MOHON MAAF, ANDA TIDAK LULUS";
+                        statusEl.style.color = "#f87171"; 
+                        statusEl.style.borderColor = "#f87171";
+                        statusEl.style.background = "rgba(248, 113, 113, 0.1)";
+                    }
+
+                    resultSection.style.display = 'block';
+                } else {
+                    dataSiswaAktif = null;
+                    searchSection.style.display = 'flex';
+                    notifError.style.display = 'block';
+                    inputPeserta.value = '';
+                    inputPeserta.focus();
+                }
+            }, 1500);
+        });
+
+        inputPeserta.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') btnCek.click();
+        });
+
+        // KEMBALI
+        btnKembali.addEventListener('click', () => {
+            resultSection.style.display = 'none';
+            searchSection.style.display = 'flex';
+            inputPeserta.value = '';
+            inputPeserta.focus();
+            dataSiswaAktif = null;
+            
+            cancelAnimationFrame(animationId);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        // CETAK HASIL
+        btnCetak.addEventListener('click', () => {
+            if(!dataSiswaAktif) return; // Proteksi kalau data kosong
+
+            // 1. Tembak data ke template Kertas Print
+            document.getElementById('p-nama').innerText = dataSiswaAktif.nama;
+            document.getElementById('p-peserta').innerText = dataSiswaAktif.peserta;
+            document.getElementById('p-nisn').innerText = dataSiswaAktif.nisn;
+            document.getElementById('p-jk').innerText = dataSiswaAktif.jk === 'L' ? 'Laki-laki' : 'Perempuan';
+            document.getElementById('p-ttl').innerText = `${dataSiswaAktif.tempat}, ${formatTanggal(dataSiswaAktif.tanggal)}`;
+            
+            document.getElementById('p-status').innerText = dataSiswaAktif.status;
+
+            // 2. Set TANGGAL DAN NOMOR SURAT REALTIME
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('p-now').innerText = today.toLocaleDateString('id-ID', options);
+
+            // Generator Bulan Romawi
+            const romawiBulan = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+            const bulanCetak = romawiBulan[today.getMonth()];
+            const tahunCetak = today.getFullYear();
+            
+            // Format Surat: ID_URUT/SKL/SMP-SB/BULAN_ROMAWI/TAHUN
+            const formatNomorSurat = `${dataSiswaAktif.id_urut}/SKL/SMP-SB/${bulanCetak}/${tahunCetak}`;
+            document.getElementById('p-nomor').innerText = formatNomorSurat;
+
+            // 3. Eksekusi Browser Print API
+            window.print();
+        });
+    </script>
+</body>
+</html>
