@@ -37,7 +37,7 @@
             overflow-x: hidden;
         }
 
-        /* ISLAMIC PATTERN BACKGROUND (SVG DATA URI) */
+        /* ISLAMIC PATTERN BACKGROUND */
         body::before {
             content: "";
             position: absolute;
@@ -113,7 +113,7 @@
         .logo-wrapper {
             width: 100px;
             height: 100px;
-            background: white; /* Fallback color for logo */
+            background: white;
             border-radius: 50%;
             margin: 0 auto 20px;
             display: flex;
@@ -127,7 +127,7 @@
         .logo-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Ensure logo is fully visible */
+            object-fit: contain;
             background: white;
         }
 
@@ -264,6 +264,23 @@
             position: relative;
         }
 
+        /* FOTO SISWA UI WEB */
+        .student-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .student-profile img {
+            width: 110px;
+            height: 146px; /* Rasio 3x4 */
+            object-fit: cover;
+            border-radius: 8px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            background: rgba(255,255,255,0.1);
+        }
+
         .status-badge {
             text-align: center;
             padding: 15px;
@@ -355,38 +372,27 @@
                 color: black !important;
                 display: block;
             }
-            /* Sembunyikan SEMUA elemen web UI saat ngeprint */
             body > *:not(#print-area) {
                 display: none !important;
             }
             
-            /* Tampilkan area print saja dengan BINGKAI */
             #print-area {
                 display: block;
                 font-family: 'Times New Roman', Times, serif;
                 color: black;
                 line-height: 1.5;
                 position: relative;
-                
-                /* PENYESUAIAN PADDING BAWAAN - GUE KECILIN BIAR TEKS NAIK KE ATAS */
                 padding: 1.2cm 2cm; 
-                
                 min-height: 27cm; 
                 box-sizing: border-box;
 
-                /* --- BINGKAI DEFAULT (GARIS GANDA ELEGAN) --- */
+                /* --- BINGKAI DEFAULT (GARIS GANDA) --- */
                 border: 6px double #333; 
                 outline: 2px solid #333;
                 outline-offset: -12px;
-
-                /* --- OPSI GAMBAR BINGKAI --- */
-                /* background-image: url('bingkai.png'); */
-                /* background-size: 100% 100%; */
-                /* background-repeat: no-repeat; */
-                /* background-position: center; */
             }
             
-            /* KOP SURAT STANDAR DINAS DUA LOGO */
+            /* KOP SURAT */
             .kop-surat {
                 display: flex;
                 align-items: center;
@@ -394,7 +400,7 @@
                 border-bottom: 3px solid black;
                 position: relative;
                 padding-bottom: 10px;
-                margin-bottom: 20px; /* Diperkecil biar ga terlalu jauh ke judul surat */
+                margin-bottom: 20px; 
             }
             .kop-surat::after {
                 content: "";
@@ -424,56 +430,58 @@
                 padding: 0 15px;
             }
             .kop-text h2 { 
-                font-size: 14pt; 
-                margin: 0; 
-                font-weight: bold;
-                letter-spacing: 0.5px; 
-                color: black; 
-                text-shadow: none;
+                font-size: 14pt; margin: 0; font-weight: bold;
+                letter-spacing: 0.5px; color: black; 
             }
             .kop-text h1 { 
-                font-size: 16pt; 
-                margin: 2px 0 5px 0; 
-                font-weight: bold;
-                letter-spacing: 0; 
-                color: black; 
-                text-shadow: none;
-                white-space: nowrap; 
+                font-size: 16pt; margin: 2px 0 5px 0; font-weight: bold;
+                color: black; white-space: nowrap; 
             }
             .kop-text p { 
-                margin: 0; 
-                font-size: 11pt; 
-                line-height: 1.3;
+                margin: 0; font-size: 11pt; line-height: 1.3;
             }
 
             .surat-title {
-                text-align: center;
-                text-decoration: underline;
-                font-weight: bold;
-                font-size: 14pt;
-                margin-bottom: 2px;
+                text-align: center; text-decoration: underline;
+                font-weight: bold; font-size: 14pt; margin-bottom: 2px;
             }
             
-            .nomor-surat {
-                text-align: center;
-                font-size: 12pt;
-                margin-bottom: 2px;
+            .nomor-surat, .tahun-ajaran {
+                text-align: center; font-size: 12pt; margin-bottom: 2px;
             }
+            .tahun-ajaran { margin-bottom: 20px; }
 
-            .tahun-ajaran {
-                text-align: center;
-                font-size: 12pt;
-                margin-bottom: 20px;
+            /* LAYOUT DATA & FOTO UNTUK CETAK */
+            .print-data-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 30px;
             }
 
             .print-table {
-                width: 90%;
-                margin: 0 auto 30px auto;
+                width: 75%;
                 border-collapse: collapse;
                 font-size: 12pt;
             }
             .print-table td { padding: 6px; border: none; color: black !important; }
-            .print-table td:first-child { width: 35%; font-weight: normal; }
+            .print-table td:first-child { width: 40%; font-weight: normal; }
+
+            /* KOTAK PASFOTO 3X4 DI SKL */
+            .print-photo-box {
+                width: 3cm;
+                height: 4cm;
+                border: 2px solid black;
+                padding: 2px;
+                background: white;
+            }
+            .print-photo-box img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
             .ttd-area {
                 float: right;
                 min-width: 350px; 
@@ -507,7 +515,6 @@
     <!-- PRINT AREA (Format Surat SKL Tersembunyi) -->
     <div id="print-area">
         <div class="kop-surat">
-            <!-- LOGO KIRI (PEMKOT BATAM) -->
             <div class="kop-logo">
                 <img src="logo-batam.png" alt="Logo Pemkot Batam" onerror="this.style.display='none'">
             </div>
@@ -521,7 +528,6 @@
                 <p>NPSN : 69980649</p>
             </div>
             
-            <!-- LOGO KANAN (SEKOLAH SHABILLA) -->
             <div class="kop-logo-kanan">
                 <img src="logo-sekolah.png" alt="Logo Sekolah Shabilla" onerror="this.style.display='none'">
             </div>
@@ -531,7 +537,6 @@
             <span style="text-decoration: underline;">SURAT KETERANGAN LULUS</span>
         </div>
         
-        <!-- BAGIAN NOMOR SURAT DINAMIS -->
         <div class="nomor-surat">
             NO. <span id="p-nomor"></span>
         </div>
@@ -540,16 +545,26 @@
             Tahun Ajaran 2025/2026
         </div>
 
-        <p style="text-align: justify; margin-bottom: 20px; font-size: 12pt;">
-            Kepala sekolah SMPS SHABILLA menerangkan dengan sesungguhnya bahwa siswa/i dengan identitas di bawah ini:
+        <p style="text-align: justify; margin-bottom: 15px; font-size: 12pt;">
+            Kepala SMPS SHABILLA menerangkan dengan sesungguhnya bahwa siswa/i dengan identitas di bawah ini:
         </p>
-        <table class="print-table">
-            <tr><td>Nama</td><td>: <span id="p-nama"></span></td></tr>
-            <tr><td>Nomor Peserta</td><td>: <span id="p-peserta"></span></td></tr>
-            <tr><td>NISN</td><td>: <span id="p-nisn"></span></td></tr>
-            <tr><td>Jenis Kelamin</td><td>: <span id="p-jk"></span></td></tr>
-            <tr><td>Tempat, Tanggal Lahir</td><td>: <span id="p-ttl"></span></td></tr>
-        </table>
+
+        <!-- WADAH FLEKSIBEL UNTUK TEKS & FOTO CETAK -->
+        <div class="print-data-wrapper">
+            <table class="print-table">
+                <tr><td>Nama</td><td>: <span id="p-nama"></span></td></tr>
+                <tr><td>Nomor Peserta</td><td>: <span id="p-peserta"></span></td></tr>
+                <tr><td>NISN</td><td>: <span id="p-nisn"></span></td></tr>
+                <tr><td>Jenis Kelamin</td><td>: <span id="p-jk"></span></td></tr>
+                <tr><td>Tempat, Tanggal Lahir</td><td>: <span id="p-ttl"></span></td></tr>
+            </table>
+            
+            <!-- PASFOTO 3X4 DI SKL -->
+            <div class="print-photo-box">
+                <img id="p-foto" src="" alt="Pasfoto 3x4">
+            </div>
+        </div>
+
         <p style="text-align: center; font-size: 14pt; font-weight: bold; margin: 30px 0;">
             Dinyatakan: <span id="p-status"></span>
         </p>
@@ -574,7 +589,6 @@
     <div class="container">
         <div class="glass-card" id="main-card">
             
-            <!-- LOGO SEKOLAH DI HALAMAN UTAMA -->
             <div class="logo-wrapper">
                 <img src="logo-sekolah.png" alt="Logo SMPS Shabilla" onerror="this.style.display='none'">
             </div>
@@ -595,16 +609,17 @@
                 </button>
             </div>
 
-            <!-- Loader -->
             <div class="loader" id="loader"></div>
-
-            <!-- Notification Error -->
-            <div class="notification notif-error" id="notif-error">
-                DATA TIDAK DITEMUKAN
-            </div>
+            <div class="notification notif-error" id="notif-error">DATA TIDAK DITEMUKAN</div>
 
             <!-- Result Area -->
             <div class="result-container" id="result-section">
+                
+                <!-- FOTO SISWA DI HALAMAN WEB -->
+                <div class="student-profile">
+                    <img id="res-foto" src="" alt="Foto Siswa">
+                </div>
+
                 <div class="status-badge" id="res-status"></div>
                 
                 <table class="data-table">
@@ -675,13 +690,11 @@ NEVAN RAYHAN AGRA,0199,L,0113901102,BATAM,2011-02-04,LULUS
 ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
         `;
 
-        // Fungsi parse dengan penambahan LOGIKA ID URUT UNTUK NOMOR SURAT
         function parseCSVToObjects(csvText) {
             const lines = csvText.trim().split('\n');
-            let counter = 1; // Penghitung urutan
+            let counter = 1;
             return lines.map(line => {
                 const col = line.split(',');
-                // Buat nomor urut 3 digit misal: 001, 002, 015
                 const idUrut = String(counter++).padStart(3, '0'); 
                 return {
                     id_urut: idUrut, 
@@ -697,9 +710,11 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
         }
 
         const siswaData = parseCSVToObjects(rawCSV);
-        let dataSiswaAktif = null; // Menyimpan data siswa yang sedang dicek
+        let dataSiswaAktif = null;
 
-        // DOM ELEMENTS
+        // Ikon Siluet Cadangan (Kalau foto gak ada di folder)
+        const fallbackImg = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+
         const inputPeserta = document.getElementById('input-peserta');
         const btnCek = document.getElementById('btn-cek');
         const searchSection = document.getElementById('search-section');
@@ -710,7 +725,6 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
         const btnCetak = document.getElementById('btn-cetak');
         const btnFullscreen = document.getElementById('btn-fullscreen');
 
-        // FORMAT TANGGAL
         function formatTanggal(tglStr) {
             const bulanIndo = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
             const p = tglStr.split('-');
@@ -718,7 +732,6 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
             return `${p[2]} ${bulanIndo[parseInt(p[1])-1]} ${p[0]}`;
         }
 
-        // FULLSCREEN LOGIC
         btnFullscreen.addEventListener('click', () => {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().catch(err => console.log(err));
@@ -727,7 +740,6 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
             }
         });
 
-        // AUDIO LOGIC 
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         function playSuccessSound() {
             if(audioCtx.state === 'suspended') audioCtx.resume();
@@ -754,7 +766,6 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
             });
         }
 
-        // CONFETTI LOGIC
         const canvas = document.getElementById('confetti-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -820,7 +831,18 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
                 const result = siswaData.find(s => s.peserta === keyword);
 
                 if (result) {
-                    dataSiswaAktif = result; // Simpan data siswa aktif untuk cetak
+                    dataSiswaAktif = result;
+
+                    // LOGIKA INJEKSI FOTO SISWA BERSARAKAN NOMOR PESERTA
+                    const resFoto = document.getElementById('res-foto');
+                    const pFoto = document.getElementById('p-foto');
+                    const urlFoto = `foto_siswa/${result.peserta}.jpg`; // Format Path File Foto
+                    
+                    // Reset Error handler & set src baru
+                    resFoto.onerror = function() { this.src = fallbackImg; };
+                    pFoto.onerror = function() { this.src = fallbackImg; };
+                    resFoto.src = urlFoto;
+                    pFoto.src = urlFoto;
 
                     document.getElementById('res-nama').innerText = result.nama;
                     document.getElementById('res-peserta').innerText = result.peserta;
@@ -861,7 +883,6 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
             if(e.key === 'Enter') btnCek.click();
         });
 
-        // KEMBALI
         btnKembali.addEventListener('click', () => {
             resultSection.style.display = 'none';
             searchSection.style.display = 'flex';
@@ -873,34 +894,27 @@ ZARIFAH PUTRI RAHMAT,0215,P,0107909931,BATAM,2010-12-29,LULUS
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         });
 
-        // CETAK HASIL
         btnCetak.addEventListener('click', () => {
-            if(!dataSiswaAktif) return; // Proteksi kalau data kosong
+            if(!dataSiswaAktif) return; 
 
-            // 1. Tembak data ke template Kertas Print
             document.getElementById('p-nama').innerText = dataSiswaAktif.nama;
             document.getElementById('p-peserta').innerText = dataSiswaAktif.peserta;
             document.getElementById('p-nisn').innerText = dataSiswaAktif.nisn;
             document.getElementById('p-jk').innerText = dataSiswaAktif.jk === 'L' ? 'Laki-laki' : 'Perempuan';
             document.getElementById('p-ttl').innerText = `${dataSiswaAktif.tempat}, ${formatTanggal(dataSiswaAktif.tanggal)}`;
-            
             document.getElementById('p-status').innerText = dataSiswaAktif.status;
 
-            // 2. Set TANGGAL DAN NOMOR SURAT REALTIME
             const today = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('p-now').innerText = today.toLocaleDateString('id-ID', options);
 
-            // Generator Bulan Romawi
             const romawiBulan = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
             const bulanCetak = romawiBulan[today.getMonth()];
             const tahunCetak = today.getFullYear();
             
-            // Format Surat: ID_URUT/SKL/SMP-SB/BULAN_ROMAWI/TAHUN
             const formatNomorSurat = `${dataSiswaAktif.id_urut}/SKL/SMP-SB/${bulanCetak}/${tahunCetak}`;
             document.getElementById('p-nomor').innerText = formatNomorSurat;
 
-            // 3. Eksekusi Browser Print API
             window.print();
         });
     </script>
